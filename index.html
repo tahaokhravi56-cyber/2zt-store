@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZT STORE | فروشگاه اکانت کالاف</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #07090d;
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 11, 16, 0.97);
+            border-bottom: 1px solid #252b36;
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00e5ff;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ddd;
+            padding: 9px 12px;
+            border-radius: 9px;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+            background: #111923;
+        }
+
+        .admin-link {
+            color: #00e5ff !important;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            background:
+                radial-gradient(circle at center, #123940 0%, #07090d 62%);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 65px;
+            background: linear-gradient(90deg, #00e5ff, #7c4dff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 19px;
+            margin: 15px 0 25px;
+        }
+
+        .main-btn,
+        .buy-btn,
+        .save-btn {
+            padding: 13px 24px;
+            border-radius: 11px;
+            color: #fff;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00b8ff, #7448ff);
+            transition: .2s;
+        }
+
+        .main-btn:hover,
+        .buy-btn:hover,
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 229, 255, .18);
+        }
+
+        .gray-btn {
+            padding: 13px 24px;
+            border-radius: 11px;
+            background: #282e38;
+            color: #fff;
+        }
+
+        .red-btn {
+            padding: 11px 17px;
+            border-radius: 9px;
+            background: #b92828;
+            color: #fff;
+        }
+
+        .purple-btn {
+            padding: 11px 17px;
+            border-radius: 9px;
+            background: #6650a5;
+            color: #fff;
+        }
+
+        .green-btn {
+            padding: 11px 17px;
+            border-radius: 9px;
+            background: #19734d;
+            color: #fff;
+        }
+
+        /* SEARCH */
+        .search-area {
+            max-width: 1100px;
+            margin: 35px auto 10px;
+            padding: 0 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #303744;
+            background: #11151d;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input:focus,
+        .form-input:focus {
+            border-color: #00e5ff;
+        }
+
+        /* TITLE */
+        .title {
+            text-align: center;
+            margin: 45px 0 20px;
+        }
+
+        .title h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #888;
+        }
+
+        /* PRODUCTS */
+        .products {
+            max-width: 1150px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: #11151d;
+            border: 1px solid #252b36;
+            border-radius: 18px;
+            padding: 15px;
+            overflow: hidden;
+            transition: .25s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #00e5ff;
+        }
+
+        .account-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            background: #080a0e;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 190px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #111923, #181122);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        .available {
+            background: #123c2a;
+            color: #4cffad;
+        }
+
+        .sold {
+            background: #3c1717;
+            color: #ff7777;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin: 12px 0;
+        }
+
+        .info {
+            color: #999;
+            line-height: 1.9;
+            min-height: 75px;
+        }
+
+        .price {
+            color: #00e5ff;
+            font-size: 21px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .buy-btn:disabled {
+            background: #3a3f49;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 70px;
+            padding: 40px 20px;
+            text-align: center;
+            background: #0c0f14;
+            color: #888;
+        }
+
+        .support-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .support-btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .call-btn {
+            background: #16805c;
+            color: #fff;
+        }
+
+        .sms-btn {
+            background: #6354b8;
+            color: #fff;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, .86);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 500px;
+            max-height: 92vh;
+            overflow-y: auto;
+            background: #11151d;
+            border: 1px solid #303744;
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .modal-box h2 {
+            margin-top: 0;
+            color: #00e5ff;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 13px;
+            margin: 7px 0 13px;
+            background: #080a0e;
+            color: #fff;
+            border: 1px solid #303744;
+            border-radius: 9px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-label {
+            display: block;
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .message-error {
+            color: #ff6b6b;
+            margin-top: 12px;
+        }
+
+        .message-success {
+            color: #4cffad;
+            margin-top: 12px;
+        }
+
+        /* IMAGE UPLOAD */
+        .image-preview-box {
+            margin: 10px 0 14px;
+            display: none;
+        }
+
+        .image-preview {
+            width: 100%;
+            max-height: 220px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #080a0e;
+            border: 1px solid #303744;
+        }
+
+        .remove-image-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ddd;
+            margin-bottom: 12px;
+        }
+
+        .remove-image-row input {
+            width: auto;
+        }
+
+        /* ADMIN */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 900;
+            overflow-y: auto;
+            background: #07090d;
+            padding: 28px 15px;
+        }
+
+        .admin-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .admin-header {
+            background: #11151d;
+            border: 1px solid #252b36;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .admin-header h1 {
+            color: #00e5ff;
+            margin-top: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .admin-card {
+            background: #11151d;
+            border: 1px solid #252b36;
+            border-radius: 15px;
+            padding: 16px;
+            margin-bottom: 13px;
+        }
+
+        .admin-top {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .admin-image {
+            width: 115px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 9px;
+            background: #080a0e;
+        }
+
+        .admin-placeholder {
+            width: 115px;
+            height: 80px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            background: #151a22;
+        }
+
+        .admin-info {
+            flex: 1;
+        }
+
+        .admin-info strong {
+            font-size: 18px;
+        }
+
+        .admin-actions-small {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .empty {
+            text-align: center;
+            color: #888;
+            padding: 40px 10px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .admin-top {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">ZT STORE</div>
+
+    <nav>
+        <a href="#home">خانه</a>
+        <a href="#accounts">اکانت‌ها</a>
+        <a href="#contact">پشتیبانی</a>
+
+        <a href="#" class="admin-link"
+           onclick="openLogin(); return false;">
+            🔐 مدیریت
+        </a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div>
+        <h1>ZT STORE</h1>
+
+        <p>
+            فروشگاه اکانت‌های Call of Duty Mobile
+        </p>
+
+        <button class="main-btn"
+                onclick="location.href='#accounts'">
+            مشاهده اکانت‌ها
+        </button>
+    </div>
+</section>
+
+
+<!-- SEARCH -->
+<div class="search-area">
+    <input
+        id="searchInput"
+        class="search-input"
+        type="text"
+        placeholder="🔎 جستجوی اکانت..."
+        oninput="renderProducts()"
+    >
+</div>
+
+
+<!-- PRODUCTS TITLE -->
+<div class="title" id="accounts">
+    <h2>🎮 اکانت‌های فروشگاه</h2>
+    <p>اکانت مورد نظرت را پیدا کن</p>
+</div>
+
+
+<!-- PRODUCTS -->
+<section class="products" id="products"></section>
+
+
+<!-- FOOTER / SUPPORT -->
+<footer id="contact">
+
+    <h2>🛠️ پشتیبانی ZT STORE</h2>
+
+    <p>
+        برای سوال، سفارش یا پشتیبانی با ما در تماس باشید
+    </p>
+
+    <div class="support-buttons">
+
+        <a
+            class="support-btn call-btn"
+            href="tel:09032622602"
+        >
+            📞 تماس با پشتیبانی
+        </a>
+
+        <a
+            class="support-btn sms-btn"
+            href="sms:09032622602?body=سلام، برای خرید اکانت کالاف پیام دادم."
+        >
+            💬 ارسال پیامک
+        </a>
+
+    </div>
+
+    <p style="color:#00e5ff;margin-top:25px;">
+        📱 09032622602
+    </p>
+
+    <p>
+        © ZT STORE
+    </p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+        <h2>🔐 ورود مدیریت</h2>
+
+        <p style="color:#888;">
+            فقط مدیر فروشگاه
+        </p>
+
+        <input
+            class="form-input"
+            id="passwordInput"
+            type="password"
+            placeholder="رمز مدیریت"
+            onkeydown="if(event.key==='Enter') loginAdmin()"
+        >
+
+        <div class="form-buttons">
+
+            <button
+                class="save-btn"
+                onclick="loginAdmin()">
+                ورود
+            </button>
+
+            <button
+                class="gray-btn"
+                onclick="closeLogin()">
+                بستن
+            </button>
+
+        </div>
+
+        <div id="loginMessage"
+             class="message-error"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ACCOUNT FORM MODAL -->
+<div class="modal" id="accountModal">
+
+    <div class="modal-box">
+
+        <h2 id="formTitle">
+            ➕ افزودن اکانت
+        </h2>
+
+        <label class="form-label">
+            نام اکانت
+        </label>
+
+        <input
+            class="form-input"
+            id="accountName"
+            placeholder="مثلاً اکانت لجندری #4"
+        >
+
+        <label class="form-label">
+            لول
+        </label>
+
+        <input
+            class="form-input"
+            id="accountLevel"
+            type="number"
+            placeholder="مثلاً 150"
+        >
+
+        <label class="form-label">
+            قیمت به تومان
+        </label>
+
+        <input
+            class="form-input"
+            id="accountPrice"
+            type="number"
+            placeholder="مثلاً 2500000"
+        >
+
+        <label class="form-label">
+            توضیحات
+        </label>
+
+        <input
+            class="form-input"
+            id="accountInfo"
+            placeholder="مثلاً 3 گان لجندری + اسکین..."
+        >
+
+        <label class="form-label">
+            وضعیت
+        </label>
+
+        <select
+            class="form-select"
+            id="accountStatus"
+        >
+            <option value="available">✓ موجود</option>
+            <option value="sold">✕ فروخته شده</option>
+        </select>
+
+
+        <label class="form-label">
+            عکس اکانت
+        </label>
+
+        <input
+            class="form-input"
+            id="accountImageFile"
+            type="file"
+            accept="image/*"
+            onchange="previewSelectedImage(event)"
+        >
+
+        <div
+            id="imagePreviewBox"
+            class="image-preview-box"
+        >
+            <img
+                id="imagePreview"
+                class="image-preview"
+                alt="پیش‌نمایش عکس"
+            >
+        </div>
+
+        <label class="remove-image-row" id="removeImageRow">
+            <input
+                type="checkbox"
+                id="removeImage"
+            >
+            حذف عکس فعلی
+        </label>
+
+        <div class="form-buttons">
+
+            <button
+                class="save-btn"
+                onclick="saveAccount()"
+            >
+                💾 ذخیره
+            </button>
+
+            <button
+                class="gray-btn"
+                onclick="closeAccountModal()"
+            >
+                لغو
+            </button>
+
+        </div>
+
+        <div
+            id="formMessage"
+            class="message-error"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+<div
+    class="admin-panel"
+    id="adminPanel"
+>
+
+    <div class="admin-container">
+
+        <div class="admin-header">
+
+            <h1>
+                🎮 پنل مدیریت ZT STORE
+            </h1>
+
+            <p style="color:#888;">
+                اینجا می‌توانی اکانت‌ها را اضافه، ویرایش و حذف کنی.
+            </p>
+
+            <div class="admin-actions">
+
+                <button
+                    class="save-btn"
+                    onclick="openAddForm()"
+                >
+                    ➕ افزودن اکانت
+                </button>
+
+                <button
+                    class="gray-btn"
+                    onclick="closeAdmin()"
+                >
+                    🏠 بازگشت به فروشگاه
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="adminAccounts"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   رمز مدیریت
+========================================= */
+
+const ADMIN_PASSWORD = "59798590";
+
+
+/* =========================================
+   اطلاعات اولیه
+========================================= */
+
+let accounts = JSON.parse(
+    localStorage.getItem("zt_accounts")
+) || [
+
+    {
+        id: 1,
+        name: "اکانت لجندری #1",
+        level: 150,
+        price: 2500000,
+        image: "",
+        info: "چند اسکین لجندری و گان ویژه",
+        status: "available"
+    },
+
+    {
+        id: 2,
+        name: "اکانت حرفه‌ای #2",
+        level: 120,
+        price: 1500000,
+        image: "",
+        info: "اسکین‌های متنوع و مناسب پلیر حرفه‌ای",
+        status: "available"
+    },
+
+    {
+        id: 3,
+        name: "اکانت اقتصادی #3",
+        level: 80,
+        price: 750000,
+        image: "",
+        info: "مناسب شروع بازی و دارای آیتم‌های ویژه",
+        status: "available"
+    }
+
+];
+
+
+let editingId = null;
+
+
+/* =========================================
+   ابزار امنیتی برای نمایش متن
+========================================= */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* =========================================
+   ذخیره اطلاعات
+========================================= */
+
+function saveData() {
+
+    localStorage.setItem(
+        "zt_accounts",
+        JSON.stringify(accounts)
+    );
+
+}
+
+
+/* =========================================
+   عکس پیش‌فرض
+========================================= */
+
+function imageHTML(image, className = "account-image") {
+
+    if (image) {
+
+        return `
+            <img
+                class="${className}"
+                src="${image}"
+                alt="عکس اکانت"
+            >
+        `;
+
+    }
+
+    return `
+        <div class="image-placeholder">
+            🎮
+        </div>
+    `;
+}
+
+
+function adminImageHTML(image) {
+
+    if (image) {
+
+        return `
+            <img
+                class="admin-image"
+                src="${image}"
+                alt="عکس"
+            >
+        `;
+
+    }
+
+    return `
+        <div class="admin-placeholder">
+            🎮
+        </div>
+    `;
+}
+
+
+/* =========================================
+   نمایش محصولات
+========================================= */
+
+function renderProducts() {
+
+    const productsBox =
+        document.getElementById("products");
+
+    const search =
+        document.getElementById("searchInput")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const filtered =
+        accounts.filter(account =>
+            account.name
+                .toLowerCase()
+                .includes(search)
+        );
+
+
+    productsBox.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        productsBox.innerHTML = `
+            <div class="empty">
+                اکانتی پیدا نشد.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(account => {
+
+        const available =
+            account.status === "available";
+
+        const statusClass =
+            available ? "available" : "sold";
+
+        const statusText =
+            available
+                ? "✓ موجود"
+                : "✕ فروخته شده";
+
+
+        productsBox.innerHTML += `
+
+            <div class="card">
+
+                ${imageHTML(account.image)}
+
+                <span class="status ${statusClass}">
+                    ${statusText}
+                </span>
+
+                <h3>
+                    ${escapeHTML(account.name)}
+                </h3>
+
+                <div class="info">
+
+                    ⭐ لول: ${escapeHTML(account.level)}
+
+                    <br>
+
+                    🎯 ${escapeHTML(account.info)}
+
+                </div>
+
+                <div class="price">
+
+                    ${Number(account.price).toLocaleString("fa-IR")}
+                    تومان
+
+                </div>
+
+                <button
+                    class="buy-btn"
+                    ${available ? "" : "disabled"}
+                    onclick="orderAccount(${account.id})"
+                >
+                    ${
+                        available
+                            ? "مشاهده / سفارش"
+                            : "فروخته شده"
+                    }
+                </button>
+
+            </div>
+        `;
+
+    });
+
+}
+
+
+/* =========================================
+   سفارش
+========================================= */
+
+function orderAccount(id) {
+
+    const account =
+        accounts.find(a => a.id === id);
+
+    if (!account) return;
+
+
+    alert(
+        "اکانت: " +
+        account.name +
+        "\n\n" +
+        "لول: " +
+        account.level +
+        "\n" +
+        "قیمت: " +
+        Number(account.price).toLocaleString("fa-IR") +
+        " تومان\n\n" +
+        "برای سفارش با پشتیبانی تماس بگیرید."
+    );
+
+}
+
+
+/* =========================================
+   ورود مدیریت
+========================================= */
+
+function openLogin() {
+
+    document.getElementById("loginModal")
+        .style.display = "flex";
+
+    document.getElementById("passwordInput")
+        .focus();
+}
+
+
+function closeLogin() {
+
+    document.getElementById("loginModal")
+        .style.display = "none";
+
+    document.getElementById("passwordInput")
+        .value = "";
+
+    document.getElementById("loginMessage")
+        .innerText = "";
+}
+
+
+function loginAdmin() {
+
+    const password =
+        document.getElementById("passwordInput")
+            .value;
+
+
+    if (password === ADMIN_PASSWORD) {
+
+        closeLogin();
+
+        document.getElementById("adminPanel")
+            .style.display = "block";
+
+        renderAdmin();
+
+    }
+
+    else {
+
+        document.getElementById("loginMessage")
+            .innerText =
+            "❌ رمز اشتباه است.";
+
+    }
+
+}
+
+
+/* =========================================
+   بستن پنل مدیریت
+========================================= */
+
+function closeAdmin() {
+
+    document.getElementById("adminPanel")
+        .style.display = "none";
+
+}
+
+
+/* =========================================
+   نمایش لیست مدیریت
+========================================= */
+
+function renderAdmin() {
+
+    const box =
+        document.getElementById("adminAccounts");
+
+    box.innerHTML = "";
+
+
+    if (accounts.length === 0) {
+
+        box.innerHTML = `
+            <div class="admin-card empty">
+                هنوز هیچ اکانتی اضافه نشده است.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    accounts.forEach(account => {
+
+        const status =
+            account.status === "available"
+                ? "✓ موجود"
+                : "✕ فروخته شده";
+
+
+        box.innerHTML += `
+
+            <div class="admin-card">
+
+                <div class="admin-top">
+
+                    ${adminImageHTML(account.image)}
+
+                    <div class="admin-info">
+
+                        <strong>
+                            ${escapeHTML(account.name)}
+                        </strong>
+
+                        <p style="color:#999;line-height:1.8;">
+
+                            لول:
+                            ${escapeHTML(account.level)}
+
+                            <br>
+
+                            قیمت:
+                            ${Number(account.price).toLocaleString("fa-IR")}
+                            تومان
+
+                            <br>
+
+                            وضعیت:
+                            ${status}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="color:#888;margin-top:12px;"
+                >
+                    ${escapeHTML(account.info)}
+                </div>
+
+
+                <div class="admin-actions-small">
+
+                    <button
+                        class="purple-btn"
+                        onclick="editAccount(${account.id})"
+                    >
+                        ✏️ ویرایش
+                    </button>
+
+                    <button
+                        class="red-btn"
+                        onclick="deleteAccount(${account.id})"
+                    >
+                        🗑️ حذف
+                    </button>
+
+                    <button
+                        class="green-btn"
+                        onclick="toggleStatus(${account.id})"
+                    >
+                        🔄 تغییر وضعیت
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================
+   فرم افزودن
+========================================= */
+
+function openAddForm() {
+
+    editingId = null;
+
+    document.getElementById("formTitle")
+        .innerText =
+        "➕ افزودن اکانت";
+
+    clearForm();
+
+    document.getElementById("removeImageRow")
+        .style.display = "none";
+
+    document.getElementById("accountModal")
+        .style.display = "flex";
+
+}
+
+
+/* =========================================
+   فرم ویرایش
+========================================= */
+
+function editAccount(id) {
+
+    const account =
+        accounts.find(a => a.id === id);
+
+    if (!account) return;
+
+
+    editingId = id;
+
+
+    document.getElementById("formTitle")
+        .innerText =
+        "✏️ ویرایش اکانت";
+
+
+    document.getElementById("accountName")
+        .value = account.name;
+
+    document.getElementById("accountLevel")
+        .value = account.level;
+
+    document.getElementById("accountPrice")
+        .value = account.price;
+
+    document.getElementById("accountInfo")
+        .value = account.info;
+
+    document.getElementById("accountStatus")
+        .value = account.status;
+
+    document.getElementById("accountImageFile")
+        .value = "";
+
+    document.getElementById("removeImage")
+        .checked = false;
+
+
+    if (account.image) {
+
+        document.getElementById("imagePreview")
+            .src = account.image;
+
+        document.getElementById("imagePreviewBox")
+            .style.display = "block";
+
+    }
+
+    else {
+
+        document.getElementById("imagePreviewBox")
+            .style.display = "none";
+
+    }
+
+
+    document.getElementById("removeImageRow")
+        .style.display = "flex";
+
+    document.getElementById("formMessage")
+        .innerText = "";
+
+    document.getElementById("accountModal")
+        .style.display = "flex";
+
+}
+
+
+/* =========================================
+   پیش‌نمایش عکس
+========================================= */
+
+function previewSelectedImage(event) {
+
+    const file =
+        event.target.files[0];
+
+    if (!file) return;
+
+
+    if (!file.type.startsWith("image/")) {
+
+        document.getElementById("formMessage")
+            .innerText =
+            "❌ لطفاً یک فایل تصویری انتخاب کن.";
+
+        event.target.value = "";
+
+        return;
+    }
+
+
+    if (file.size > 2 * 1024 * 1024) {
+
+        document.getElementById("formMessage")
+            .innerText =
+            "❌ حجم عکس باید کمتر از 2 مگابایت باشد.";
+
+        event.target.value = "";
+
+        return;
+    }
+
+
+    const reader = new FileReader();
+
+
+    reader.onload = function(e) {
+
+        document.getElementById("imagePreview")
+            .src = e.target.result;
+
+        document.getElementById("imagePreviewBox")
+            .style.display = "block";
+
+        document.getElementById("removeImage")
+            .checked = false;
+
+        document.getElementById("formMessage")
+            .innerText = "";
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================================
+   ذخیره افزودن / ویرایش
+========================================= */
+
+function saveAccount() {
+
+    const name =
+        document.getElementById("accountName")
+            .value
+            .trim();
+
+    const level =
+        document.getElementById("accountLevel")
+            .value
+            .trim();
+
+    const price =
+        document.getElementById("accountPrice")
+            .value
+            .trim();
+
+    const info =
+        document.getElementById("accountInfo")
+            .value
+            .trim();
+
+    const status =
+        document.getElementById("accountStatus")
+            .value;
+
+    const file =
+        document.getElementById("accountImageFile")
+            .files[0];
+
+    const removeImage =
+        document.getElementById("removeImage")
+            .checked;
+
+
+    if (!name || !level || !price) {
+
+        document.getElementById("formMessage")
+            .innerText =
+            "❌ نام، لول و قیمت را وارد کن.";
+
+        return;
+    }
+
+
+    function finishSave(imageData) {
+
+        if (editingId === null) {
+
+            accounts.push({
+
+                id: Date.now(),
+
+                name: name,
+
+                level: Number(level),
+
+                price: Number(price),
+
+                image: imageData || "",
+
+                info:
+                    info || "بدون توضیحات",
+
+                status: status
+
+            });
+
+        }
+
+        else {
+
+            const account =
+                accounts.find(
+                    a => a.id === editingId
+                );
+
+            if (!account) return;
+
+
+            account.name = name;
+
+            account.level =
+                Number(level);
+
+            account.price =
+                Number(price);
+
+            account.info =
+                info || "بدون توضیحات";
+
+            account.status =
+                status;
+
+
+            if (removeImage) {
+
+                account.image = "";
+
+            }
+
+            else if (imageData) {
+
+                account.image =
+                    imageData;
+
+            }
+
+        }
+
+
+        saveData();
+
+        closeAccountModal();
+
+        renderProducts();
+
+        renderAdmin();
+
+    }
+
+
+    if (file) {
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function(e) {
+
+            finishSave(
+                e.target.result
+            );
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    }
+
+    else {
+
+        finishSave(null);
+
+    }
+
+}
+
+
+/* =========================================
+   حذف اکانت
+========================================= */
+
+function deleteAccount(id) {
+
+    const account =
+        accounts.find(a => a.id === id);
+
+    if (!account) return;
+
+
+    const yes =
+        confirm(
+            "آیا مطمئنی می‌خواهی «" +
+            account.name +
+            "» حذف شود؟"
+        );
+
+
+    if (!yes) return;
+
+
+    accounts =
+        accounts.filter(
+            a => a.id !== id
+        );
+
+
+    saveData();
+
+    renderProducts();
+
+    renderAdmin();
+
+}
+
+
+/* =========================================
+   تغییر موجود / فروخته شده
+========================================= */
+
+function toggleStatus(id) {
+
+    const account =
+        accounts.find(a => a.id === id);
+
+    if (!account) return;
+
+
+    account.status =
+        account.status === "available"
+            ? "sold"
+            : "available";
+
+
+    saveData();
+
+    renderProducts();
+
+    renderAdmin();
+
+}
+
+
+/* =========================================
+   پاک کردن فرم
+========================================= */
+
+function clearForm() {
+
+    document.getElementById("accountName")
+        .value = "";
+
+    document.getElementById("accountLevel")
+        .value = "";
+
+    document.getElementById("accountPrice")
+        .value = "";
+
+    document.getElementById("accountInfo")
+        .value = "";
+
+    document.getElementById("accountStatus")
+        .value = "available";
+
+    document.getElementById("accountImageFile")
+        .value = "";
+
+    document.getElementById("removeImage")
+        .checked = false;
+
+    document.getElementById("imagePreviewBox")
+        .style.display = "none";
+
+    document.getElementById("imagePreview")
+        .src = "";
+
+    document.getElementById("formMessage")
+        .innerText = "";
+
+}
+
+
+/* =========================================
+   بستن فرم
+========================================= */
+
+function closeAccountModal() {
+
+    document.getElementById("accountModal")
+        .style.display = "none";
+
+    clearForm();
+
+}
+
+
+/* =========================================
+   بستن مودال با کلیک بیرون
+========================================= */
+
+window.addEventListener("click", function(event) {
+
+    const loginModal =
+        document.getElementById("loginModal");
+
+    const accountModal =
+        document.getElementById("accountModal");
+
+
+    if (event.target === loginModal) {
+
+        closeLogin();
+
+    }
+
+
+    if (event.target === accountModal) {
+
+        closeAccountModal();
+
+    }
+
+});
+
+
+/* =========================================
+   شروع
+========================================= */
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
